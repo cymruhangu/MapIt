@@ -7,10 +7,19 @@
 	<title>MapIt</title>
 	<link rel="stylesheet" href="main.css">
 </head>
-<body>
+<body onload="initialize()">
+ <div id="map"></div>
+  <div>
+    <input id="address" type="textbox" value="Brooklyn, NY">
+    <input type="button" value="Encode" onclick="codeAddress()">
+  </div>
 	<div id="map"></div>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="./index.js"></script>
+	<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFyC3jDrzJK-9cl0wuWZonC-JpwP5Gaho&callback=initMap"
+    async defer></script> -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFyC3jDrzJK-9cl0wuWZonC-JpwP5Gaho"
+    async defer></script>
 </body>
 </html>
