@@ -1,9 +1,9 @@
-  var geocoder;
-  var map;
+  let geocoder;
+  let map;
   function initialize() {
     geocoder = new google.maps.Geocoder();
-    var latlng = new google.maps.LatLng(40.7589, -73.9851);
-    var mapOptions = {
+    let latlng = new google.maps.LatLng(40.7589, -73.9851);
+    let mapOptions = {
       zoom: 12,
       center: latlng
     }
@@ -11,14 +11,21 @@
   }
 
   function codeAddress() {
-    var address = document.getElementById('address').value;
+    let address = document.getElementById('address').value;
     geocoder.geocode( { 'address': address}, function(results, status) {
       if (status == 'OK') {
         map.setCenter(results[0].geometry.location);
-        var marker = new google.maps.Marker({
+        let marker = new google.maps.Marker({
             map: map,
             position: results[0].geometry.location
         });
+        let infoWindow = new google.maps.InfoWindow({
+        content:'<a href="http://www.smokejazz.com">Smoke Jazz</a>'
+      });
+
+      marker.addListener('click', function(){
+        infoWindow.open(map, marker);
+      });
       } else {
         alert('Geocode was not successful for the following reason: ' + status);
       }
